@@ -23,14 +23,12 @@ class CompassScreen: UIViewController{
 	var lastHeading: CGFloat! = 0.0
 	
 	var bearing: CGFloat!
-	var lastBearing: CGFloat! = 0.0
+	var adjustedAngle: CGFloat!
+	var lastAdjustedAngle: CGFloat! = 0.0
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		locationManagerConfig()
-		bearing =  calculateBearing(current: start)
-		NeedleImageView.transform = NeedleImageView.transform.rotated(by: bearing)
-		lastBearing = bearing
 		// End of viewDidLoad()
 	}
 	
@@ -38,7 +36,7 @@ class CompassScreen: UIViewController{
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.headingFilter = 5
-		//locationManager.startUpdatingHeading()
+		locationManager.startUpdatingHeading()
 		locationManager.startUpdatingLocation()
 		locationManager.headingOrientation = .portrait
 	}
@@ -54,30 +52,27 @@ class CompassScreen: UIViewController{
 		return -atan2(a, b)
 		// End of calculateBearing()
 	}
-	
 	// End of class: CompassScreen
 }
 
 
 extension CompassScreen: CLLocationManagerDelegate{
-	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-		UIView.animate(withDuration: 2.0){
-			self.heading = CGFloat(newHeading.trueHeading)
-			self.NeedleImageView.transform = self.NeedleImageView.transform.rotated(by: self.heading)
-			self.lastHeading = self.heading
-		}
-		print("heading changed")
-	}
-	
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		self.locationManager.distanceFilter = 15.0
 		guard let location = locations.last else { return }
 		current = location.coordinate
 		bearing =  calculateBearing(current: current!)
-		NeedleImageView.transform = NeedleImageView.transform.rotated(by: bearing - lastBearing)
-		lastBearing = bearing
-		print("location has changed")
-		print(bearing)
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+		heading = CGFloat(newHeading.trueHeading)
+		let bearingInDegrees = radiansToDegrees(radians: bearing)
+		adjustedAngle = heading - bearingInDegrees
+		adjustedAngle = -CGFloat(degreesToRadians(degrees: Double(adjustedAngle)))
+		UIView.animate(withDuration: 1.0){
+			self.NeedleImageView.transform =  self.NeedleImageView.transform.rotated(by: self.adjustedAngle - self.lastAdjustedAngle)
+		}
+		lastAdjustedAngle = adjustedAngle
 	}
 	// End of extension
 }

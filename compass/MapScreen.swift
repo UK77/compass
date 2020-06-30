@@ -92,8 +92,6 @@ class MapScreen: UIViewController {
 		let longitude = mapView.centerCoordinate.longitude
 		return CLLocation(latitude: latitude, longitude: longitude)
 	}
-
-
 }
 
 extension MapScreen: CLLocationManagerDelegate {
@@ -106,10 +104,6 @@ extension MapScreen: CLLocationManagerDelegate {
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		checkLocationAuthorization()
 	}
-//	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-//		print(newHeading.trueHeading)
-//	}
-	
 }
 
 
