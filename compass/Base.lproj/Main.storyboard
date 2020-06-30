@@ -1,24 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map Screen-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapScreen" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJf-YP-UmX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RHu-Xf-97S"/>
+                                </connections>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="NTb-ws-r3d">
+                                <rect key="frame" x="187" y="413" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DSB-sz-8HT"/>
+                                    <constraint firstAttribute="width" constant="40" id="lix-Ce-8UV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eX-rW-C9K">
+                                <rect key="frame" x="117" y="632" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="Ucp-AK-G0F"/>
+                                    <constraint firstAttribute="width" constant="180" id="aUF-Ed-rWX"/>
+                                </constraints>
+                                <state key="normal" image="SET GOAL"/>
+                                <connections>
+                                    <segue destination="8Cu-fP-iBu" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="uT5-1n-8OD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7eX-rW-C9K" secondAttribute="bottom" constant="50" id="Eio-gU-BXE"/>
+                            <constraint firstItem="7eX-rW-C9K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K8k-ci-HO6"/>
+                            <constraint firstItem="NTb-ws-r3d" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="K8z-Cv-fSi"/>
+                            <constraint firstAttribute="bottom" secondItem="tJf-YP-UmX" secondAttribute="bottom" id="Kpb-MU-1ba"/>
+                            <constraint firstItem="tJf-YP-UmX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Xeo-a3-mYF"/>
+                            <constraint firstItem="NTb-ws-r3d" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-15" id="fX5-xi-uyn"/>
+                            <constraint firstItem="tJf-YP-UmX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iaO-HQ-nSY"/>
+                            <constraint firstItem="tJf-YP-UmX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mbK-nf-t4R"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Mua-UL-tLh"/>
+                    <connections>
+                        <outlet property="mapView" destination="tJf-YP-UmX" id="mhf-0C-xKA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+        </scene>
+        <!--Compass Screen-->
+        <scene sceneID="8xc-is-SMO">
+            <objects>
+                <viewController id="8Cu-fP-iBu" customClass="CompassScreen" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zQM-A8-5sd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2rJ-ke-gmU">
+                                <rect key="frame" x="20" y="629" width="374" height="183"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I36-qM-E53">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="183"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="I36-qM-E53" secondAttribute="height" multiplier="1:1" id="17A-6F-Cef"/>
+                                        </constraints>
+                                        <state key="normal" image="RESET GOAL"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="b91-5K-Kzy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8W-Xp-zmS">
+                                        <rect key="frame" x="191" y="0.0" width="183" height="183"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="X8W-Xp-zmS" secondAttribute="height" multiplier="1:1" id="4tB-ph-CjW"/>
+                                        </constraints>
+                                        <state key="normal" image="FINISH"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="wOf-fq-KpT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Compass Frame" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-pi-6Qm">
+                                <rect key="frame" x="10" y="124" width="394" height="394"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5KG-pi-6Qm" secondAttribute="height" multiplier="1:1" id="7zM-GA-fJU"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Needle" translatesAutoresizingMaskIntoConstraints="NO" id="XBf-9R-cmX">
+                                <rect key="frame" x="65" y="179" width="284" height="284"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XBf-9R-cmX" secondAttribute="height" multiplier="1:1" id="VX0-kx-4Su"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XJ6-0W-X3T" firstAttribute="trailing" secondItem="2rJ-ke-gmU" secondAttribute="trailing" constant="20" id="0gZ-rJ-bCn"/>
+                            <constraint firstItem="2rJ-ke-gmU" firstAttribute="centerX" secondItem="zQM-A8-5sd" secondAttribute="centerX" id="HUx-SS-Tbh"/>
+                            <constraint firstItem="2rJ-ke-gmU" firstAttribute="leading" secondItem="XJ6-0W-X3T" secondAttribute="leading" constant="20" id="N70-ev-r1n"/>
+                            <constraint firstItem="5KG-pi-6Qm" firstAttribute="top" secondItem="XJ6-0W-X3T" secondAttribute="top" constant="80" id="OZD-fA-iFF"/>
+                            <constraint firstItem="XJ6-0W-X3T" firstAttribute="bottom" secondItem="2rJ-ke-gmU" secondAttribute="bottom" constant="50" id="PKw-B6-zx1"/>
+                            <constraint firstItem="XBf-9R-cmX" firstAttribute="centerY" secondItem="5KG-pi-6Qm" secondAttribute="centerY" id="RFg-g5-UlR"/>
+                            <constraint firstAttribute="trailing" secondItem="5KG-pi-6Qm" secondAttribute="trailing" constant="10" id="fvr-PT-ec5"/>
+                            <constraint firstItem="5KG-pi-6Qm" firstAttribute="leading" secondItem="zQM-A8-5sd" secondAttribute="leading" constant="10" id="jPn-fx-AAg"/>
+                            <constraint firstItem="XBf-9R-cmX" firstAttribute="centerX" secondItem="5KG-pi-6Qm" secondAttribute="centerX" id="uBN-ad-6ik"/>
+                            <constraint firstItem="5KG-pi-6Qm" firstAttribute="centerX" secondItem="zQM-A8-5sd" secondAttribute="centerX" id="vMH-gN-cES"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XJ6-0W-X3T"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1SI-8c-OcL"/>
+                    <connections>
+                        <outlet property="NeedleImageView" destination="XBf-9R-cmX" id="zVE-DQ-hv1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6VV-vt-0cy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="962" y="140"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wOf-fq-KpT"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Compass Frame" width="425" height="425"/>
+        <image name="FINISH" width="180" height="180"/>
+        <image name="Needle" width="180" height="284"/>
+        <image name="RESET GOAL" width="180" height="180"/>
+        <image name="SET GOAL" width="180" height="180"/>
+        <image name="pin" width="27" height="47"/>
+    </resources>
 </document>
