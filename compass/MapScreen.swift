@@ -25,32 +25,20 @@ class MapScreen: UIViewController {
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		let receiverVC = segue.destination as! CompassScreen
-		receiverVC.goalLatitude = setGoal().0
-		receiverVC.goalLongitude = setGoal().1
-		receiverVC.currentLatitude = setCurrent().0
-		receiverVC.currentLongitude = setCurrent().1
-		
-		//receiverVC.heading = locationManager.headingOrientation
-		
-	}
+		receiverVC.start = setStartAndGoal().0
+		receiverVC.goalLatitude = setStartAndGoal().1
+		receiverVC.goalLongitude = setStartAndGoal().2	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func setCurrent() -> (CLLocationDegrees, CLLocationDegrees) {
-		let current = locationManager.location!.coordinate
-		let currentLatitude = current.latitude
-		let currentLongitude = current.longitude
-		return (currentLatitude, currentLongitude)
-	}
-	
-	
-	func setGoal() -> (CLLocationDegrees, CLLocationDegrees) {
+	func setStartAndGoal() -> (CLLocationCoordinate2D, CLLocationDegrees, CLLocationDegrees) {
+		let start = locationManager.location!.coordinate
 		let goal = getCenterLocation(for: mapView).coordinate
 		let goalLatitude = goal.latitude
 		let goalLongitude = goal.longitude
-		return (goalLatitude, goalLongitude)
+		return (start, goalLatitude, goalLongitude)
 	}
 	
 	
