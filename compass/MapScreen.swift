@@ -27,7 +27,10 @@ class MapScreen: UIViewController {
 		let receiverVC = segue.destination as! CompassScreen
 		receiverVC.start = setStartAndGoal().0
 		receiverVC.goalLatitude = setStartAndGoal().1
-		receiverVC.goalLongitude = setStartAndGoal().2	}
+		receiverVC.goalLongitude = setStartAndGoal().2
+		locationManager.stopUpdatingHeading()
+		locationManager.stopUpdatingLocation()
+	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -103,9 +106,9 @@ extension MapScreen: CLLocationManagerDelegate {
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		checkLocationAuthorization()
 	}
-	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-		print(newHeading.trueHeading)
-	}
+//	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+//		print(newHeading.trueHeading)
+//	}
 	
 }
 
