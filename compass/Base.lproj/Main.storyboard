@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="780" width="414" height="116"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
-                                    <segue destination="a80-Q8-8U7" kind="presentation" identifier="ToSearchView" modalPresentationStyle="overFullScreen" id="ujS-cu-5Ao"/>
+                                    <segue destination="a80-Q8-8U7" kind="presentation" identifier="ToSearchView" modalPresentationStyle="automatic" id="ujS-cu-5Ao"/>
                                 </connections>
                             </button>
                             <searchBar userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="場所を検索します" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-9O-Nm1">
@@ -155,7 +155,7 @@
             <objects>
                 <tableViewController id="a80-Q8-8U7" customClass="SearchView" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pJv-9j-kje">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="場所を検索します" id="zR9-gM-twV">
@@ -168,12 +168,28 @@
                             </scopeButtonTitles>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="45" id="fO8-YO-1rU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Jmf-1a-R46" detailTextLabel="nFX-t0-g5r" rowHeight="45" style="IBUITableViewCellStyleSubtitle" id="fO8-YO-1rU">
                                 <rect key="frame" x="0.0" y="84" width="414" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fO8-YO-1rU" id="HE7-cl-5eF">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jmf-1a-R46">
+                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nFX-t0-g5r">
+                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -183,6 +199,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Tsz-nS-3Nl"/>
+                    <connections>
+                        <outlet property="searchBar" destination="zR9-gM-twV" id="WeD-yf-GOz"/>
+                        <outlet property="searchResultsTable" destination="pJv-9j-kje" id="QnQ-Vd-2Se"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="ToMapScreen" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="3Uo-53-Hzk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSr-vq-SJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +211,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b91-5K-Kzy"/>
+        <segue reference="3Uo-53-Hzk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Compass Frame" width="425" height="425"/>

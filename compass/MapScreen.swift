@@ -21,9 +21,20 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 	let locationManager = CLLocationManager()
 	let regionInMeters: Double = 10000
 	
+	var selectedLatitude: CLLocationDegrees?
+	var selectedLongitude: CLLocationDegrees?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		checkLocationServices()
+		if (selectedLatitude != nil){
+			let location = CLLocationCoordinate2D(latitude: selectedLatitude!, longitude: selectedLongitude!)
+			let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters / 10, longitudinalMeters: regionInMeters / 10)
+			mapView.setRegion(region, animated: true)
+			print("run")
+		}else{
+			checkLocationServices()
+		}
+		print("loaded")
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
