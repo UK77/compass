@@ -10,9 +10,12 @@ import UIKit
 import MapKit
 import CoreLocation
 
+enum Segues{
+	static let ToCompassScreen = "ToCompassScreen"
+	static let ToSearchView = "ToSearchView"
+}
 
-
-class MapScreen: UIViewController {
+class MapScreen: UIViewController, UISearchBarDelegate {
 	@IBOutlet weak var mapView: MKMapView!
 	
 	let locationManager = CLLocationManager()
@@ -24,12 +27,17 @@ class MapScreen: UIViewController {
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let receiverVC = segue.destination as! CompassScreen
-		receiverVC.start = setStartAndGoal().0
-		receiverVC.goalLatitude = setStartAndGoal().1
-		receiverVC.goalLongitude = setStartAndGoal().2
-		locationManager.stopUpdatingHeading()
-		locationManager.stopUpdatingLocation()
+		if segue.identifier == Segues.ToCompassScreen{
+			let compassScreen = segue.destination as! CompassScreen
+			compassScreen.start = setStartAndGoal().0
+			compassScreen.goalLatitude = setStartAndGoal().1
+			compassScreen.goalLongitude = setStartAndGoal().2
+			locationManager.stopUpdatingHeading()
+			locationManager.stopUpdatingLocation()
+		}
+		if segue.identifier == Segues.ToSearchView{
+			print("done")
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -119,6 +127,8 @@ class MapScreen: UIViewController {
 		let longitude = mapView.centerCoordinate.longitude
 		return CLLocation(latitude: latitude, longitude: longitude)
 	}
+	// searchbar
+	
 }
 
 extension MapScreen: CLLocationManagerDelegate {
@@ -126,5 +136,3 @@ extension MapScreen: CLLocationManagerDelegate {
 		checkLocationAuthorization()
 	}
 }
-
-
