@@ -21,7 +21,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="RHu-Xf-97S"/>
                                 </connections>
                             </mapView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="NTb-ws-r3d">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIN" translatesAutoresizingMaskIntoConstraints="NO" id="NTb-ws-r3d">
                                 <rect key="frame" x="187" y="413" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DSB-sz-8HT"/>
@@ -30,7 +30,7 @@
                             </imageView>
                             <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWh-3n-cvw" userLabel="SearchBarButton">
                                 <rect key="frame" x="0.0" y="780" width="414" height="116"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.93180722000000005" green="0.93537253139999998" blue="0.9489004016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="a80-Q8-8U7" kind="presentation" identifier="ToSearchView" modalPresentationStyle="automatic" id="ujS-cu-5Ao"/>
                                 </connections>
@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="height" constant="180" id="Ucp-AK-G0F"/>
                                     <constraint firstAttribute="width" constant="180" id="aUF-Ed-rWX"/>
                                 </constraints>
-                                <state key="normal" image="SET GOAL"/>
+                                <state key="normal" image="START"/>
                                 <connections>
                                     <segue destination="8Cu-fP-iBu" kind="presentation" identifier="ToCompassScreen" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="uT5-1n-8OD"/>
                                 </connections>
@@ -96,7 +96,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="I36-qM-E53" secondAttribute="height" multiplier="1:1" id="17A-6F-Cef"/>
                                         </constraints>
-                                        <state key="normal" image="RESET GOAL"/>
+                                        <state key="normal" image="RESET"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="b91-5K-Kzy"/>
                                         </connections>
@@ -113,20 +113,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Compass Frame" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-pi-6Qm">
-                                <rect key="frame" x="10" y="124" width="394" height="394"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BASE" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-pi-6Qm">
+                                <rect key="frame" x="0.0" y="124" width="414" height="414"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5KG-pi-6Qm" secondAttribute="height" multiplier="1:1" id="7zM-GA-fJU"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Needle" translatesAutoresizingMaskIntoConstraints="NO" id="XBf-9R-cmX">
-                                <rect key="frame" x="65" y="179" width="284" height="284"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NEEDLE" translatesAutoresizingMaskIntoConstraints="NO" id="XBf-9R-cmX">
+                                <rect key="frame" x="23" y="147" width="368" height="368"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XBf-9R-cmX" secondAttribute="height" multiplier="1:1" id="VX0-kx-4Su"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.93180722000000005" green="0.93537253139999998" blue="0.9489004016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XJ6-0W-X3T" firstAttribute="trailing" secondItem="2rJ-ke-gmU" secondAttribute="trailing" constant="20" id="0gZ-rJ-bCn"/>
                             <constraint firstItem="2rJ-ke-gmU" firstAttribute="centerX" secondItem="zQM-A8-5sd" secondAttribute="centerX" id="HUx-SS-Tbh"/>
@@ -134,8 +134,8 @@
                             <constraint firstItem="5KG-pi-6Qm" firstAttribute="top" secondItem="XJ6-0W-X3T" secondAttribute="top" constant="80" id="OZD-fA-iFF"/>
                             <constraint firstItem="XJ6-0W-X3T" firstAttribute="bottom" secondItem="2rJ-ke-gmU" secondAttribute="bottom" constant="50" id="PKw-B6-zx1"/>
                             <constraint firstItem="XBf-9R-cmX" firstAttribute="centerY" secondItem="5KG-pi-6Qm" secondAttribute="centerY" id="RFg-g5-UlR"/>
-                            <constraint firstAttribute="trailing" secondItem="5KG-pi-6Qm" secondAttribute="trailing" constant="10" id="fvr-PT-ec5"/>
-                            <constraint firstItem="5KG-pi-6Qm" firstAttribute="leading" secondItem="zQM-A8-5sd" secondAttribute="leading" constant="10" id="jPn-fx-AAg"/>
+                            <constraint firstAttribute="trailing" secondItem="5KG-pi-6Qm" secondAttribute="trailing" id="fvr-PT-ec5"/>
+                            <constraint firstItem="5KG-pi-6Qm" firstAttribute="leading" secondItem="zQM-A8-5sd" secondAttribute="leading" id="jPn-fx-AAg"/>
                             <constraint firstItem="XBf-9R-cmX" firstAttribute="centerX" secondItem="5KG-pi-6Qm" secondAttribute="centerX" id="uBN-ad-6ik"/>
                             <constraint firstItem="5KG-pi-6Qm" firstAttribute="centerX" secondItem="zQM-A8-5sd" secondAttribute="centerX" id="vMH-gN-cES"/>
                         </constraints>
@@ -154,14 +154,16 @@
         <scene sceneID="Q1b-IJ-QYq">
             <objects>
                 <tableViewController id="a80-Q8-8U7" customClass="SearchView" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pJv-9j-kje">
+                    <tableView key="view" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pJv-9j-kje">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.93180722000000005" green="0.93537253139999998" blue="0.9489004016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="場所を検索します" id="zR9-gM-twV">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="search" textContentType="location"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search" textContentType="location"/>
                             <scopeButtonTitles>
                                 <string>Title</string>
                                 <string>Title</string>
@@ -191,6 +193,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.93180722000000005" green="0.93537253139999998" blue="0.9489004016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -214,11 +217,11 @@
         <segue reference="3Uo-53-Hzk"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="Compass Frame" width="425" height="425"/>
-        <image name="FINISH" width="180" height="180"/>
-        <image name="Needle" width="180" height="284"/>
-        <image name="RESET GOAL" width="180" height="180"/>
-        <image name="SET GOAL" width="180" height="180"/>
-        <image name="pin" width="27" height="47"/>
+        <image name="BASE" width="265" height="265"/>
+        <image name="FINISH" width="265" height="265"/>
+        <image name="NEEDLE" width="129" height="368"/>
+        <image name="PIN" width="150" height="483"/>
+        <image name="RESET" width="265" height="265"/>
+        <image name="START" width="240" height="240"/>
     </resources>
 </document>

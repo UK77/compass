@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "NeedleX1.png",
+      "filename" : "RESET!X1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "NeedleX2.png",
+      "filename" : "RESET!X2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "NeedleX3.png",
+      "filename" : "RESET!X3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "FINISH x1.png",
+      "filename" : "FINISH!X1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "FINISH x2.png",
+      "filename" : "FINISH!X2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "FINISH x3.png",
+      "filename" : "FINISH!X3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
