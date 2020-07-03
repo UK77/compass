@@ -15,8 +15,7 @@ class CompassScreen: UIViewController{
 	let locationManager = CLLocationManager()
 	
 	var start: CLLocationCoordinate2D!
-	var goalLatitude: CLLocationDegrees!
-	var goalLongitude: CLLocationDegrees!
+	var goal: CLLocationCoordinate2D!
 	
 	var current: CLLocationCoordinate2D?
 	var heading: CGFloat!
@@ -26,10 +25,33 @@ class CompassScreen: UIViewController{
 	var adjustedAngle: CGFloat!
 	var lastAdjustedAngle: CGFloat! = 0.0
 	
+	var totalDistance: Double! = 0.0
+	var lastLocation:CLLocationCoordinate2D!
+	
+	@IBOutlet weak var DistanceToTheDestinationView: UIView!
+	@IBOutlet weak var ToTheDestination: UILabel!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		locationManagerConfig()
+		locationManager.distanceFilter = 20.0
+		UIApplication.shared.isIdleTimerDisabled = true
+		lastLocation = start
+		bearing = calculateBearing(current: start)
+		current = start
+		setDistanceLabel(start: start, end: goal)
+		ToTheDestination.textAlignment = .center
+		ToTheDestination.font = UIFont.boldSystemFont(ofSize: 70)
+		setupGradLayer()
+		
 		// End of viewDidLoad()
+	}
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ToFinishView"{
+			let finishView = segue.destination as! FinishView
+			finishView.totalDistance = totalDistance
+		}
 	}
 	
 	func locationManagerConfig(){
@@ -44,23 +66,64 @@ class CompassScreen: UIViewController{
 	func calculateBearing(current: CLLocationCoordinate2D) -> CGFloat{
 		let fLat = degreesToRadians(degrees: current.latitude)
 		let fLng = degreesToRadians(degrees: current.longitude)
-		let tLat = degreesToRadians(degrees: goalLatitude)
-		let tLng = degreesToRadians(degrees:goalLongitude)
+		let tLat = degreesToRadians(degrees: goal.latitude)
+		let tLng = degreesToRadians(degrees:goal.longitude)
 
 		let a = CGFloat(sin(fLng-tLng)*cos(tLat));
 		let b = CGFloat(cos(fLat)*sin(tLat)-sin(fLat)*cos(tLat)*cos(fLng-tLng))
 		return -atan2(a, b)
 		// End of calculateBearing()
 	}
+	
+	func calculateDistance(start: CLLocationCoordinate2D, end:CLLocationCoordinate2D) -> Double{
+		let sLat = degreesToRadians(degrees: start.latitude)
+		let sLng = degreesToRadians(degrees: start.longitude)
+		let tLat = degreesToRadians(degrees: end.latitude)
+		let tLng = degreesToRadians(degrees:end.longitude)
+		let dLat = tLat - sLat
+		let dLng = tLng - sLng
+		
+		let R: Double = 6371000
+		let a = pow(sin(dLat / 2), 2) + cos(sLat) * cos(tLat) * pow(sin(dLng / 2), 2)
+		let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+		let distance = R * c  //in meters
+		return distance
+	}
+	
+	func  setDistanceLabel(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D)  {
+		let distanceToDestination = calculateDistance(start: current!, end: goal!)
+		if distanceToDestination > 1000 {
+			ToTheDestination.text = String(format: "%.2f km", distanceToDestination / 1000)
+		}else{
+			ToTheDestination.text = String(format: "%.0f m", distanceToDestination)
+		}
+	}
+	
+	func setupGradLayer(){
+		let gradLayer = CAGradientLayer()
+		gradLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+		gradLayer.startPoint = CGPoint(x: 0.0, y:0.5)
+		gradLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+		gradLayer.frame = DistanceToTheDestinationView.bounds
+		DistanceToTheDestinationView.layer.addSublayer(gradLayer)
+		ToTheDestination.frame = DistanceToTheDestinationView.bounds
+		DistanceToTheDestinationView.mask = ToTheDestination
+		
+	}
+	
+
+	
 	// End of class: CompassScreen
 }
 
 
 extension CompassScreen: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		self.locationManager.distanceFilter = 15.0
 		guard let location = locations.last else { return }
 		current = location.coordinate
+		setDistanceLabel(start: current!, end: goal)
+		lastLocation = current
+		totalDistance += calculateDistance(start: current!, end: lastLocation)
 		bearing =  calculateBearing(current: current!)
 	}
 	

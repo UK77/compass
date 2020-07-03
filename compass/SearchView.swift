@@ -39,7 +39,6 @@ class SearchView: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterD
 		let searchRequest = MKLocalSearch.Request()
 		searchRequest.naturalLanguageQuery = searchBar.text
 		let activeSearch = MKLocalSearch(request: searchRequest)
-		print(activeSearch)
 	}
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -72,7 +71,10 @@ extension SearchView: UITableViewDataSource{
 		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
 
 		cell.textLabel?.text = searchResult.title
+		cell.textLabel?.textColor = .black
 		cell.detailTextLabel?.text = searchResult.subtitle
+		cell.detailTextLabel?.textColor = .black
+		cell.backgroundColor = .none
 
 		 return cell
 	}

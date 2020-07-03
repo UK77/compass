@@ -41,8 +41,7 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 		if segue.identifier == Segues.ToCompassScreen{
 			let compassScreen = segue.destination as! CompassScreen
 			compassScreen.start = setStartAndGoal().0
-			compassScreen.goalLatitude = setStartAndGoal().1
-			compassScreen.goalLongitude = setStartAndGoal().2
+			compassScreen.goal = setStartAndGoal().1
 			locationManager.stopUpdatingHeading()
 			locationManager.stopUpdatingLocation()
 		}
@@ -55,12 +54,10 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func setStartAndGoal() -> (CLLocationCoordinate2D, CLLocationDegrees, CLLocationDegrees) {
+	func setStartAndGoal() -> (CLLocationCoordinate2D, CLLocationCoordinate2D) {
 		let start = locationManager.location!.coordinate
 		let goal = getCenterLocation(for: mapView).coordinate
-		let goalLatitude = goal.latitude
-		let goalLongitude = goal.longitude
-		return (start, goalLatitude, goalLongitude)
+		return (start, goal)
 	}
 	
 	func centerViewOnUserLocation(){

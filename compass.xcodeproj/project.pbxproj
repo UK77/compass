@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		601CEDB724A9F6D700C60FD2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601CEDB624A9F6D700C60FD2 /* CompassView.swift */; };
+		60582BA524ADE09A006DF77F /* FinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60582BA424ADE09A006DF77F /* FinishView.swift */; };
 		60ED7D7624AC5CB8008EC2F0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60ED7D7524AC5CB8008EC2F0 /* SearchView.swift */; };
 		60F9521924A9C2B200D0B312 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F9521824A9C2B200D0B312 /* AppDelegate.swift */; };
 		60F9521B24A9C2B200D0B312 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F9521A24A9C2B200D0B312 /* SceneDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		601CEDB624A9F6D700C60FD2 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
+		60582BA424ADE09A006DF77F /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
 		60ED7D7524AC5CB8008EC2F0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		60F9521524A9C2B200D0B312 /* compass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = compass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F9521824A9C2B200D0B312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60582BA624AED57A006DF77F /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		60F9520C24A9C2B200D0B312 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +69,13 @@
 		60F9521724A9C2B200D0B312 /* compass */ = {
 			isa = PBXGroup;
 			children = (
+				60582BA624AED57A006DF77F /* fonts */,
 				60F9521824A9C2B200D0B312 /* AppDelegate.swift */,
 				60F9521A24A9C2B200D0B312 /* SceneDelegate.swift */,
 				60F9521C24A9C2B200D0B312 /* MapScreen.swift */,
 				60ED7D7524AC5CB8008EC2F0 /* SearchView.swift */,
 				601CEDB624A9F6D700C60FD2 /* CompassView.swift */,
+				60582BA424ADE09A006DF77F /* FinishView.swift */,
 				60F9521E24A9C2B200D0B312 /* Main.storyboard */,
 				60F9522124A9C2B400D0B312 /* Assets.xcassets */,
 				60F9522324A9C2B400D0B312 /* LaunchScreen.storyboard */,
@@ -145,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60ED7D7624AC5CB8008EC2F0 /* SearchView.swift in Sources */,
+				60582BA524ADE09A006DF77F /* FinishView.swift in Sources */,
 				60F9521D24A9C2B200D0B312 /* MapScreen.swift in Sources */,
 				601CEDB724A9F6D700C60FD2 /* CompassView.swift in Sources */,
 				60F9521924A9C2B200D0B312 /* AppDelegate.swift in Sources */,
