@@ -184,7 +184,7 @@
         <!--Search View-->
         <scene sceneID="Q1b-IJ-QYq">
             <objects>
-                <tableViewController id="a80-Q8-8U7" customClass="SearchView" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="a80-Q8-8U7" customClass="SearchView" customModule="DEST" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pJv-9j-kje">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +250,7 @@
         <!--Finish View-->
         <scene sceneID="4ty-Kn-de4">
             <objects>
-                <viewController id="umi-zl-g64" customClass="FinishView" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="umi-zl-g64" customClass="FinishView" customModule="DEST" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Iny-vZ-XAG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
