@@ -19,19 +19,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ICON" translatesAutoresizingMaskIntoConstraints="NO" id="8tA-7e-VnD">
-                                <rect key="frame" x="20" y="261" width="374" height="374"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="8tA-7e-VnD" secondAttribute="height" multiplier="1:1" id="awE-Ec-HB6"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="qwt-d7-jbz">
+                                <rect key="frame" x="30" y="277.5" width="354" height="341.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93180722000000005" green="0.93537253139999998" blue="0.9489004016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="8tA-7e-VnD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4wY-xV-nEZ"/>
-                            <constraint firstItem="8tA-7e-VnD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="CKm-xI-ekw"/>
-                            <constraint firstAttribute="trailing" secondItem="8tA-7e-VnD" secondAttribute="trailing" constant="20" id="hWJ-Tc-Roc"/>
-                            <constraint firstItem="8tA-7e-VnD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="mIn-wz-wQ5"/>
+                            <constraint firstItem="qwt-d7-jbz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="30" id="L5y-nM-Yxy"/>
+                            <constraint firstItem="qwt-d7-jbz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Pkt-hz-Le1"/>
+                            <constraint firstItem="qwt-d7-jbz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Run-5B-o7c"/>
+                            <constraint firstAttribute="trailing" secondItem="qwt-d7-jbz" secondAttribute="trailing" constant="30" id="tsM-02-SAk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -42,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ICON" width="1024" height="1024"/>
-        <image name="WALL" width="1000" height="1000"/>
+        <image name="WALL" width="100" height="100"/>
+        <image name="logo" width="941.5" height="341.5"/>
     </resources>
 </document>

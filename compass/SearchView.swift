@@ -71,9 +71,9 @@ extension SearchView: UITableViewDataSource{
 		let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
 
 		cell.textLabel?.text = searchResult.title
-		cell.textLabel?.textColor = .black
+		cell.textLabel?.textColor = .white
 		cell.detailTextLabel?.text = searchResult.subtitle
-		cell.detailTextLabel?.textColor = .black
+		cell.detailTextLabel?.textColor = .white
 		cell.backgroundColor = .none
 
 		 return cell

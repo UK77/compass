@@ -28,6 +28,12 @@ class CompassScreen: UIViewController{
 	var totalDistance: Double! = 0.0
 	var lastLocation:CLLocationCoordinate2D!
 	
+	let strokeTextAttributes = [
+	NSAttributedString.Key.strokeColor : UIColor(red: 147/255, green: 250/255, blue: 244/255, alpha: 1),
+	NSAttributedString.Key.foregroundColor : UIColor.clear,
+	NSAttributedString.Key.strokeWidth : 4.0,
+	NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 70)  ] as [NSAttributedString.Key : Any]
+	
 	@IBOutlet weak var DistanceToTheDestinationView: UIView!
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
@@ -39,10 +45,10 @@ class CompassScreen: UIViewController{
 		lastLocation = start
 		bearing = calculateBearing(current: start)
 		current = start
-		setDistanceLabel(start: start, end: goal)
+		ToTheDestination.frame = DistanceToTheDestinationView.bounds
 		ToTheDestination.textAlignment = .center
-		ToTheDestination.font = UIFont.boldSystemFont(ofSize: 70)
-		setupGradLayer()
+		ToTheDestination.attributedText = NSMutableAttributedString(string: setDistanceLabel(start: start, end: goal), attributes: strokeTextAttributes)
+//		setupGradLayer()
 		
 		// End of viewDidLoad()
 	}
@@ -51,6 +57,7 @@ class CompassScreen: UIViewController{
 		if segue.identifier == "ToFinishView"{
 			let finishView = segue.destination as! FinishView
 			finishView.totalDistance = totalDistance
+			finishView.strokeTextAttributes = strokeTextAttributes
 		}
 	}
 	
@@ -90,26 +97,26 @@ class CompassScreen: UIViewController{
 		return distance
 	}
 	
-	func  setDistanceLabel(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D)  {
+	func  setDistanceLabel(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D)  -> String{
 		let distanceToDestination = calculateDistance(start: current!, end: goal!)
 		if distanceToDestination > 1000 {
-			ToTheDestination.text = String(format: "%.2f km", distanceToDestination / 1000)
+			return String(format: "%.2f km", distanceToDestination / 1000)
 		}else{
-			ToTheDestination.text = String(format: "%.0f m", distanceToDestination)
+			return String(format: "%.0f m", distanceToDestination)
 		}
 	}
 	
-	func setupGradLayer(){
-		let gradLayer = CAGradientLayer()
-		gradLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
-		gradLayer.startPoint = CGPoint(x: 0.0, y:0.5)
-		gradLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-		gradLayer.frame = DistanceToTheDestinationView.bounds
-		DistanceToTheDestinationView.layer.addSublayer(gradLayer)
-		ToTheDestination.frame = DistanceToTheDestinationView.bounds
-		DistanceToTheDestinationView.mask = ToTheDestination
-		
-	}
+//	func setupGradLayer(){
+//		let gradLayer = CAGradientLayer()
+//		gradLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+//		gradLayer.startPoint = CGPoint(x: 0.0, y:0.5)
+//		gradLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+//		gradLayer.frame = DistanceToTheDestinationView.bounds
+//		DistanceToTheDestinationView.layer.addSublayer(gradLayer)
+//		ToTheDestination.frame = DistanceToTheDestinationView.bounds
+//		DistanceToTheDestinationView.mask = ToTheDestination
+//
+//	}
 	
 
 	
@@ -121,7 +128,7 @@ extension CompassScreen: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		current = location.coordinate
-		setDistanceLabel(start: current!, end: goal)
+//		setDistanceLabel(start: current!, end: goal)
 		lastLocation = current
 		totalDistance += calculateDistance(start: current!, end: lastLocation)
 		bearing =  calculateBearing(current: current!)
