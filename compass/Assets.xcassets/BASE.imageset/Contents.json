@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "BASEX1.png",
+      "filename" : "BASEx1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "BASEX2.png",
+      "filename" : "BASEx2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "BASEX3.png",
+      "filename" : "BASEx3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

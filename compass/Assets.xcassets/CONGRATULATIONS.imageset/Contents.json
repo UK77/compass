@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "RESETx1.png",
+      "filename" : "CONGRATULATIONSX1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "RESETx2.png",
+      "filename" : "CONGRATULATIONSX2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "RESETx3.png",
+      "filename" : "CONGRATULATIONSX3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
