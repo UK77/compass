@@ -24,7 +24,7 @@
 		601CEDB624A9F6D700C60FD2 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		60582BA424ADE09A006DF77F /* FinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishView.swift; sourceTree = "<group>"; };
 		60ED7D7524AC5CB8008EC2F0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		60F9521524A9C2B200D0B312 /* compass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = compass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60F9521524A9C2B200D0B312 /* DEST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DEST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F9521824A9C2B200D0B312 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F9521A24A9C2B200D0B312 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		60F9521C24A9C2B200D0B312 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		60F9521624A9C2B200D0B312 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				60F9521524A9C2B200D0B312 /* compass.app */,
+				60F9521524A9C2B200D0B312 /* DEST.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,7 +123,7 @@
 			);
 			name = compass;
 			productName = compass;
-			productReference = 60F9521524A9C2B200D0B312 /* compass.app */;
+			productReference = 60F9521524A9C2B200D0B312 /* DEST.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -396,7 +396,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lazykazee.compass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DEST;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -416,7 +416,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lazykazee.compass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DEST;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

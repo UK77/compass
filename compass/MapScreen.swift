@@ -42,6 +42,7 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 			let compassScreen = segue.destination as! CompassScreen
 			compassScreen.start = setStartAndGoal().0
 			compassScreen.goal = setStartAndGoal().1
+			compassScreen.locationManager = locationManager
 			locationManager.stopUpdatingHeading()
 			locationManager.stopUpdatingLocation()
 		}
@@ -105,18 +106,20 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 			locationManager.startUpdatingLocation()
 			locationManager.startUpdatingHeading()
 			break
+		@unknown default:
+			break
 		}
 	}
 	
 	func alertLocationAuthorization(){
 		let alertController = UIAlertController (title: "位置情報の共有が\n許可されていません", message: "このAppを使用するには位置情報を\n\"このAppの使用中のみ許可\"\nに設定してください", preferredStyle: .alert)
-
+		
 		let settingsAction = UIAlertAction(title: "設定へ", style: .default) { (_) -> Void in
-
+			
 			guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
 				return
 			}
-
+			
 			if UIApplication.shared.canOpenURL(settingsUrl) {
 				UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
 					print("Settings opened: \(success)") // Prints true
@@ -126,7 +129,7 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 		alertController.addAction(settingsAction)
 		let cancelAction = UIAlertAction(title: "キャンセル", style: .default, handler: nil)
 		alertController.addAction(cancelAction)
-
+		
 		present(alertController, animated: true, completion: nil)
 	}
 	
@@ -135,8 +138,6 @@ class MapScreen: UIViewController, UISearchBarDelegate {
 		let longitude = mapView.centerCoordinate.longitude
 		return CLLocation(latitude: latitude, longitude: longitude)
 	}
-	// searchbar
-	
 }
 
 extension MapScreen: CLLocationManagerDelegate {

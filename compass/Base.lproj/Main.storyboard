@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="780" width="414" height="116"/>
                                 <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="a80-Q8-8U7" kind="presentation" identifier="ToSearchView" modalPresentationStyle="automatic" id="ujS-cu-5Ao"/>
+                                    <segue destination="a80-Q8-8U7" kind="presentation" identifier="ToSearchView" modalPresentationStyle="formSheet" id="ujS-cu-5Ao"/>
                                 </connections>
                             </button>
                             <searchBar userInteractionEnabled="NO" alpha="0.84999999999999998" contentMode="redraw" searchBarStyle="minimal" text="" placeholder="場所を検索します" translatesAutoresizingMaskIntoConstraints="NO" id="UFb-9O-Nm1">
@@ -274,15 +274,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgD-Nf-aqv" userLabel="Total Distance Value View">
                                 <rect key="frame" x="55" y="259" width="304" height="76"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="So2-Pf-3sg" userLabel="Total Distance Value Label">
-                                        <rect key="frame" x="131" y="27" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="So2-Pf-3sg" userLabel="Total Distance Value Label">
+                                        <rect key="frame" x="131" y="27.5" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="So2-Pf-3sg" firstAttribute="centerX" secondItem="HgD-Nf-aqv" secondAttribute="centerX" id="3o4-5A-qrC"/>
+                                    <constraint firstItem="So2-Pf-3sg" firstAttribute="centerY" secondItem="HgD-Nf-aqv" secondAttribute="centerY" id="blP-oo-oLM"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -317,7 +320,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3Uo-53-Hzk"/>
+        <segue reference="b91-5K-Kzy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BASE" width="200" height="200"/>
