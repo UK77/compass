@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Map Screen-->
+        <!--Map View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapScreen" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapView" customModule="DEST" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                                 </constraints>
                                 <state key="normal" image="START"/>
                                 <connections>
-                                    <segue destination="8Cu-fP-iBu" kind="presentation" identifier="ToCompassScreen" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="uT5-1n-8OD"/>
+                                    <segue destination="8Cu-fP-iBu" kind="presentation" identifier="ToCompassView" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="uT5-1n-8OD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
-        <!--Compass Screen-->
+        <!--Compass View-->
         <scene sceneID="8xc-is-SMO">
             <objects>
-                <viewController id="8Cu-fP-iBu" customClass="CompassScreen" customModule="compass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Cu-fP-iBu" customClass="CompassView" customModule="DEST" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zQM-A8-5sd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,7 +240,7 @@
                     <connections>
                         <outlet property="searchBar" destination="zR9-gM-twV" id="WeD-yf-GOz"/>
                         <outlet property="searchResultsTable" destination="pJv-9j-kje" id="QnQ-Vd-2Se"/>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="ToMapScreen" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="3Uo-53-Hzk"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="ToMapView" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="3Uo-53-Hzk"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jSr-vq-SJG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -320,7 +320,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b91-5K-Kzy"/>
+        <segue reference="6pC-hS-wBS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BASE" width="200" height="200"/>

@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class CompassScreen: UIViewController{
+class CompassView: UIViewController{
 	@IBOutlet weak var NeedleImageView: UIImageView!
 	
 	var locationManager: CLLocationManager!
@@ -106,11 +106,11 @@ class CompassScreen: UIViewController{
 			return String(format: "%.0f m", distanceToDestination)
 		}
 	}
-	// End of class: CompassScreen
+	// End of class: CompassView
 }
 
 
-extension CompassScreen: CLLocationManagerDelegate{
+extension CompassView: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		current = location.coordinate

@@ -27,9 +27,9 @@ class SearchView: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterD
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		let mapScreen = segue.destination as! MapScreen
-		mapScreen.selectedLatitude = lat
-		mapScreen.selectedLongitude = lon
+		let mapView = segue.destination as! MapView
+		mapView.selectedLatitude = lat
+		mapView.selectedLongitude = lon
 	}
 	
 	@IBOutlet weak var searchBar: UISearchBar!
@@ -90,10 +90,10 @@ extension SearchView: UITableViewDelegate{
 		let search = MKLocalSearch(request: searchRequest)
 		search.start{ (response, error) in
 			guard let coordinate = response?.mapItems[0].placemark.coordinate else{ return }
-			guard let name = response?.mapItems[0].name else { return }
+			guard (response?.mapItems[0].name) != nil else { return }
 			self.lat = coordinate.latitude
 			self.lon = coordinate.longitude
-			self.performSegue(withIdentifier: "ToMapScreen", sender: self)
+			self.performSegue(withIdentifier: "ToMapView", sender: self)
 		}
 	}
 }
