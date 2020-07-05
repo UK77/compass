@@ -34,13 +34,33 @@ class CompassView: UIViewController{
 		NSAttributedString.Key.strokeWidth : 4.0,
 		NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 70)
 		] as [NSAttributedString.Key : Any]
+	
+	@IBOutlet weak var baseImageView: UIImageView!
+	@IBOutlet weak var toTheDestinationImageView: UIImageView!
+	
+	func setConstraints(){
+		// constraints of baseImageView
+		baseImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4, constant: 0).isActive = true
+		baseImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4, constant: 0).isActive = true
+		baseImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 12).isActive = true
+		baseImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		//constraints of NeedleImageView
+		NeedleImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.43, constant: 0).isActive = true
+		NeedleImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 15).isActive = true
+		//constraints of distanceToTheDestination
+		DistanceToTheDestinationView.bottomAnchor.constraint(equalTo: toTheDestinationImageView.bottomAnchor, constant: -80  ).isActive = true
+		//print()
+		
+	}
 		
 	
 	@IBOutlet weak var DistanceToTheDestinationView: UIView!
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
 	override func viewDidLoad() {
+		
 		super.viewDidLoad()
+		setConstraints()
 		locationManagerConfig()
 		UIApplication.shared.isIdleTimerDisabled = true
 		lastLocation = start

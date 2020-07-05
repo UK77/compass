@@ -24,8 +24,16 @@ class MapView: UIViewController, UISearchBarDelegate {
 	var selectedLatitude: CLLocationDegrees?
 	var selectedLongitude: CLLocationDegrees?
 	
+	@IBOutlet weak var searchBarButton: UIButton!
+	func setConstraints(){
+		searchBarButton.heightAnchor.constraint(equalTo: mapView.heightAnchor, multiplier: 1/9, constant: 0).isActive = true
+	}
+	
+	
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setConstraints()
 		if (selectedLatitude != nil){
 			let location = CLLocationCoordinate2D(latitude: selectedLatitude!, longitude: selectedLongitude!)
 			let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters / 10, longitudinalMeters: regionInMeters / 10)
@@ -44,9 +52,7 @@ class MapView: UIViewController, UISearchBarDelegate {
 			locationManager.stopUpdatingHeading()
 			locationManager.stopUpdatingLocation()
 		}
-		if segue.identifier == Segues.ToSearchView{
-			
-		}
+		if segue.identifier == Segues.ToSearchView{}
 	}
 	
 	override func didReceiveMemoryWarning() {
