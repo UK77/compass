@@ -83,7 +83,7 @@ class CompassView: UIViewController{
 	
 	func locationManagerConfig(){
 		locationManager.delegate = self
-		locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
 		locationManager.distanceFilter = 20.0
 		locationManager.startUpdatingLocation()
 		locationManager.headingFilter = 5

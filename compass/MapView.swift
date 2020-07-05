@@ -49,7 +49,6 @@ class MapView: UIViewController, UISearchBarDelegate {
 			compassView.start = setStartAndGoal().0
 			compassView.goal = setStartAndGoal().1
 			compassView.locationManager = locationManager
-			locationManager.stopUpdatingHeading()
 			locationManager.stopUpdatingLocation()
 		}
 		if segue.identifier == Segues.ToSearchView{}
@@ -92,7 +91,6 @@ class MapView: UIViewController, UISearchBarDelegate {
 			mapView.showsUserLocation = true
 			centerViewOnUserLocation()
 			locationManager.startUpdatingLocation()
-			locationManager.startUpdatingHeading()
 			break
 		case .denied:
 			// show alert instructing them to turn on permissions
@@ -108,7 +106,6 @@ class MapView: UIViewController, UISearchBarDelegate {
 			mapView.showsUserLocation = true
 			centerViewOnUserLocation()
 			locationManager.startUpdatingLocation()
-			locationManager.startUpdatingHeading()
 			break
 		@unknown default:
 			break
