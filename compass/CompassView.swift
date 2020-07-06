@@ -40,20 +40,22 @@ class CompassView: UIViewController{
 	
 	func setConstraints(){
 		// constraints of baseImageView
+		baseImageView.translatesAutoresizingMaskIntoConstraints = false
 		baseImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4, constant: 0).isActive = true
 		baseImageView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4, constant: 0).isActive = true
-		baseImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 12).isActive = true
+		baseImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 10).isActive = true
 		baseImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		//constraints of NeedleImageView
-		NeedleImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.43, constant: 0).isActive = true
-		NeedleImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 15).isActive = true
+		NeedleImageView.translatesAutoresizingMaskIntoConstraints = false
+		NeedleImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.40, constant: 0).isActive = true
+		NeedleImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height / 10).isActive = true
+		
 		//constraints of distanceToTheDestination
 		DistanceToTheDestinationView.bottomAnchor.constraint(equalTo: toTheDestinationImageView.bottomAnchor, constant: -80  ).isActive = true
 		//print()
 		
 	}
-		
-	
+
 	@IBOutlet weak var DistanceToTheDestinationView: UIView!
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
@@ -69,10 +71,10 @@ class CompassView: UIViewController{
 		ToTheDestination.frame = DistanceToTheDestinationView.bounds
 		ToTheDestination.textAlignment = .center
 		ToTheDestination.attributedText = NSMutableAttributedString(string: setDistanceLabel(start: start, end: goal), attributes: strokeTextAttributes)
-		
+
 		// End of viewDidLoad()
 	}
-	
+		
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ToFinishView"{
 			let finishView = segue.destination as! FinishView
