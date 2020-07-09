@@ -16,7 +16,7 @@ class CompassView: UIViewController{
 	
 	var start: CLLocationCoordinate2D!
 	var goals: [CLLocationCoordinate2D]!
-	var goal: CLLocationCoordinate2D?
+	var goal: CLLocationCoordinate2D!
 	
 	var current: CLLocationCoordinate2D?
 	var heading: CGFloat!
@@ -61,8 +61,10 @@ class CompassView: UIViewController{
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
 	override func viewDidLoad() {
-		print(goals)
-		let goal = goals[0]
+		goal = goals[0]
+		if  (goals.count == 1){
+			nextButton.removeFromSuperview()
+		}
 		super.viewDidLoad()
 		setConstraints()
 		locationManagerConfig()
@@ -73,7 +75,6 @@ class CompassView: UIViewController{
 		ToTheDestination.frame = DistanceToTheDestinationView.bounds
 		ToTheDestination.textAlignment = .center
 		ToTheDestination.attributedText = NSMutableAttributedString(string: setDistanceLabel(start: start, end: goal), attributes: strokeTextAttributes)
-
 		// End of viewDidLoad()
 	}
 		
@@ -83,6 +84,18 @@ class CompassView: UIViewController{
 			finishView.totalDistance = totalDistance
 			finishView.strokeTextAttributes = strokeTextAttributes
 		}
+	}
+	
+	@IBOutlet weak var nextButton: UIButton!
+	var count = 1
+	@IBAction func changeToNextGoal(_ sender: Any) {
+			goal = goals[count]
+			ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
+			bearing =  calculateBearing(current: current!, goal: goal!)
+			count += 1
+			if goals.count >= count {
+				nextButton.removeFromSuperview()
+			}
 	}
 	
 	func locationManagerConfig(){
@@ -138,7 +151,7 @@ extension CompassView: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		current = location.coordinate
-		goal = goals[0]
+		if (goal != nil) {goal = goals[0]}
 		ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
 		totalDistance += calculateDistance(start: current!, end: lastLocation)
 		lastLocation = current

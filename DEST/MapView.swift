@@ -28,6 +28,7 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 	func setConstraints(){
 		searchBarButton.heightAnchor.constraint(equalTo: mapView.heightAnchor, multiplier: 1/9, constant: 0).isActive = true
 	}
+		
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,6 +57,22 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 		super.didReceiveMemoryWarning()
 	}
 	
+	@IBOutlet weak var buttonStackView: UIStackView!
+	
+	func setupStackView(){
+		buttonStackView.alignment = .center
+		buttonStackView.distribution = .fillEqually
+		buttonStackView.axis = .horizontal
+		buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+	}
+	
+	func setupStartButton(){
+		setupStackView()
+		let startButton = UIButton()
+		startButton.setImage(UIImage(named: "START"), for: .normal)
+		buttonStackView.addArrangedSubview(startButton)
+	}
+	
 	var goals: [CLLocationCoordinate2D] = []
 	
 	@IBAction func addGoals(_ sender: Any) {
@@ -64,6 +81,9 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 		goal.coordinate = getCenterLocation(for: mapView).coordinate
 		goals.append(goal.coordinate)
 		mapView.addAnnotation(goal)
+		if goals.count == 1{
+			setupStartButton()
+		}
 	}
 	
 	func getCenterLocation(for mapView: MKMapView) -> CLLocation{
