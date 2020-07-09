@@ -15,7 +15,7 @@ enum Segues{
 	static let ToSearchView = "ToSearchView"
 }
 
-class MapView: UIViewController, UISearchBarDelegate {
+class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 	@IBOutlet weak var mapView: MKMapView!
 	
 	let locationManager = CLLocationManager()
@@ -28,8 +28,6 @@ class MapView: UIViewController, UISearchBarDelegate {
 	func setConstraints(){
 		searchBarButton.heightAnchor.constraint(equalTo: mapView.heightAnchor, multiplier: 1/9, constant: 0).isActive = true
 	}
-	
-	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,6 +54,22 @@ class MapView: UIViewController, UISearchBarDelegate {
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
+	}
+	
+	var goals: [CLLocationCoordinate2D] = []
+	
+	@IBAction func addGoals(_ sender: Any) {
+		let goal = MKPointAnnotation()
+		//firstGoal.title = String(count)
+		goal.coordinate = getCenterLocation(for: mapView).coordinate
+		goals.append(goal.coordinate)
+		mapView.addAnnotation(goal)
+	}
+	
+	func getCenterLocation(for mapView: MKMapView) -> CLLocation{
+		let latitude = mapView.centerCoordinate.latitude
+		let longitude = mapView.centerCoordinate.longitude
+		return CLLocation(latitude: latitude, longitude: longitude)
 	}
 	
 	func setStartAndGoal() -> (CLLocationCoordinate2D, CLLocationCoordinate2D) {
@@ -134,11 +148,6 @@ class MapView: UIViewController, UISearchBarDelegate {
 		present(alertController, animated: true, completion: nil)
 	}
 	
-	func getCenterLocation(for mapView: MKMapView) -> CLLocation{
-		let latitude = mapView.centerCoordinate.latitude
-		let longitude = mapView.centerCoordinate.longitude
-		return CLLocation(latitude: latitude, longitude: longitude)
-	}
 }
 
 extension MapView: CLLocationManagerDelegate {

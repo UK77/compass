@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "82E74555-9A3C-4474-88AB-BAAC7AC8F7FA"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "compass/FinishView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "FinishView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36 - 6c2889439a85f730"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "compass.FinishView.totalDistanceValueLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "compass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kazukiuwai/Documents/compass/compass/FinishView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "128">
+               </Location>
+               <Location
+                  uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36 - da61061940699324"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "compass.FinishView.totalDistanceValueLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "compass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kazukiuwai/Documents/compass/compass/FinishView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36 - 842afad032461e35"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "compass.FinishView.totalDistanceValueLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "compass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kazukiuwai/Documents/compass/compass/FinishView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36 - 532c350311d46032"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "compass.FinishView.totalDistanceValueLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "compass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kazukiuwai/Documents/compass/compass/FinishView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36 - c8c74e594c10d8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "compass.FinishView.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; compass.FinishView"
+                  moduleName = "compass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kazukiuwai/Documents/compass/compass/FinishView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  uuid = "F00612ED-A614-4D84-B014-5C0D82CF9C36 - 289855787817ca1a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "compass.FinishView.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;compass.FinishView&gt;"
+                  moduleName = "compass"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kazukiuwai/Documents/compass/compass/FinishView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D22CC683-B434-4690-AFAD-4060342695B3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "compass/FinishView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "FinishView"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "158348AE-D889-474E-BE10-8E1C1AA3D59A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "compass/FinishView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
