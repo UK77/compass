@@ -80,6 +80,7 @@
                         <outlet property="buttonStackView" destination="rEY-07-jAZ" id="17v-qo-w0d"/>
                         <outlet property="mapView" destination="tJf-YP-UmX" id="mhf-0C-xKA"/>
                         <outlet property="searchBarButton" destination="AWh-3n-cvw" id="JL4-fP-mSW"/>
+                        <segue destination="8Cu-fP-iBu" kind="presentation" identifier="ToCompassView" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Lns-ei-hqP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

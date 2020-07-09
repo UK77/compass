@@ -70,7 +70,13 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 		setupStackView()
 		let startButton = UIButton()
 		startButton.setImage(UIImage(named: "START"), for: .normal)
+		startButton.heightAnchor.constraint(equalToConstant: 180).isActive = true
 		buttonStackView.addArrangedSubview(startButton)
+		startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+	}
+	
+	@objc func startButtonTapped(){
+		self.performSegue(withIdentifier: Segues.ToCompassView, sender: nil)
 	}
 	
 	var goals: [CLLocationCoordinate2D] = []
