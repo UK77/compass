@@ -18,6 +18,8 @@ class SearchView: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterD
 	private var lat: CLLocationDegrees!
 	private var lon: CLLocationDegrees!
 	
+	var goals: [CLLocationCoordinate2D]!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		searchCompleter.delegate = self
@@ -30,6 +32,7 @@ class SearchView: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterD
 		let mapView = segue.destination as! MapView
 		mapView.selectedLatitude = lat
 		mapView.selectedLongitude = lon
+		mapView.goals = goals
 	}
 	
 	@IBOutlet weak var searchBar: UISearchBar!

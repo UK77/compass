@@ -40,6 +40,11 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 		}else{
 			checkLocationServices()
 		}
+		
+		if goals.count != 0{
+			loadGoals()
+			setupStartButton()
+		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,11 +55,22 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 			compassView.locationManager = locationManager
 			locationManager.stopUpdatingLocation()
 		}
-		if segue.identifier == Segues.ToSearchView{}
+		if segue.identifier == Segues.ToSearchView{
+			let searchView = segue.destination as! SearchView
+			searchView.goals = goals
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
+	}
+	
+	func loadGoals(){
+		for goalCoordinates in goals{
+			let goal = MKPointAnnotation()
+			goal.coordinate = goalCoordinates
+			mapView.addAnnotation(goal)
+		}
 	}
 	
 	@IBOutlet weak var buttonStackView: UIStackView!
