@@ -44,8 +44,8 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == Segues.ToCompassView{
 			let compassView = segue.destination as! CompassView
-			compassView.start = setStartAndGoal().0
-			compassView.goal = setStartAndGoal().1
+			compassView.start = locationManager.location!.coordinate
+			compassView.goals = goals
 			compassView.locationManager = locationManager
 			locationManager.stopUpdatingLocation()
 		}
@@ -70,12 +70,6 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 		let latitude = mapView.centerCoordinate.latitude
 		let longitude = mapView.centerCoordinate.longitude
 		return CLLocation(latitude: latitude, longitude: longitude)
-	}
-	
-	func setStartAndGoal() -> (CLLocationCoordinate2D, CLLocationCoordinate2D) {
-		let start = locationManager.location!.coordinate
-		let goal = getCenterLocation(for: mapView).coordinate
-		return (start, goal)
 	}
 	
 	func centerViewOnUserLocation(){

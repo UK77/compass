@@ -137,10 +137,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="I36-qM-E53" secondAttribute="height" multiplier="1:1" id="17A-6F-Cef"/>
                                         </constraints>
-                                        <state key="normal" image="RESET"/>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="b91-5K-Kzy"/>
-                                        </connections>
+                                        <state key="normal" image="NEXT"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8W-Xp-zmS">
                                         <rect key="frame" x="191" y="0.0" width="183" height="183"/>
@@ -324,7 +321,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b91-5K-Kzy"/>
+        <segue reference="6pC-hS-wBS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="BASE" width="200" height="200"/>
@@ -332,8 +329,8 @@
         <image name="FINISH" width="260" height="260"/>
         <image name="Image" width="250" height="250"/>
         <image name="NEEDLE" width="129" height="368"/>
+        <image name="NEXT" width="260" height="260"/>
         <image name="PIN" width="100" height="330"/>
-        <image name="RESET" width="260" height="260"/>
         <image name="RESTART" width="260" height="260"/>
         <image name="START" width="250" height="250"/>
         <image name="TO THE DESTINATION" width="545" height="214"/>

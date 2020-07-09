@@ -15,7 +15,8 @@ class CompassView: UIViewController{
 	var locationManager: CLLocationManager!
 	
 	var start: CLLocationCoordinate2D!
-	var goal: CLLocationCoordinate2D!
+	var goals: [CLLocationCoordinate2D]!
+	var goal: CLLocationCoordinate2D?
 	
 	var current: CLLocationCoordinate2D?
 	var heading: CGFloat!
@@ -60,13 +61,14 @@ class CompassView: UIViewController{
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
 	override func viewDidLoad() {
-		
+		print(goals)
+		let goal = goals[0]
 		super.viewDidLoad()
 		setConstraints()
 		locationManagerConfig()
 		UIApplication.shared.isIdleTimerDisabled = true
 		lastLocation = start
-		bearing = calculateBearing(current: start)
+		bearing = calculateBearing(current: start, goal: goal)
 		current = start
 		ToTheDestination.frame = DistanceToTheDestinationView.bounds
 		ToTheDestination.textAlignment = .center
@@ -93,7 +95,7 @@ class CompassView: UIViewController{
 		locationManager.headingOrientation = .portrait
 	}
 	
-	func calculateBearing(current: CLLocationCoordinate2D) -> CGFloat{
+	func calculateBearing(current: CLLocationCoordinate2D, goal:CLLocationCoordinate2D) -> CGFloat{
 		let fLat = degreesToRadians(degrees: current.latitude)
 		let fLng = degreesToRadians(degrees: current.longitude)
 		let tLat = degreesToRadians(degrees: goal.latitude)
@@ -136,10 +138,11 @@ extension CompassView: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		current = location.coordinate
-		ToTheDestination.text =  setDistanceLabel(start: current!, end: goal)
+		goal = goals[0]
+		ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
 		totalDistance += calculateDistance(start: current!, end: lastLocation)
 		lastLocation = current
-		bearing =  calculateBearing(current: current!)
+		bearing =  calculateBearing(current: current!, goal: goal!)
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
