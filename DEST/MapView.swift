@@ -15,7 +15,7 @@ enum Segues{
 	static let ToSearchView = "ToSearchView"
 }
 
-class MapView: UIViewController, UISearchBarDelegate {
+class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 	@IBOutlet weak var mapView: MKMapView!
 	
 	let locationManager = CLLocationManager()
@@ -28,8 +28,7 @@ class MapView: UIViewController, UISearchBarDelegate {
 	func setConstraints(){
 		searchBarButton.heightAnchor.constraint(equalTo: mapView.heightAnchor, multiplier: 1/9, constant: 0).isActive = true
 	}
-	
-	
+		
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -41,27 +40,78 @@ class MapView: UIViewController, UISearchBarDelegate {
 		}else{
 			checkLocationServices()
 		}
+
+		if goals.count != 0{
+			loadGoals()
+			setupStartButton()
+		}
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == Segues.ToCompassView{
 			let compassView = segue.destination as! CompassView
-			compassView.start = setStartAndGoal().0
-			compassView.goal = setStartAndGoal().1
+			compassView.start = locationManager.location!.coordinate
+			compassView.goals = goals
 			compassView.locationManager = locationManager
 			locationManager.stopUpdatingLocation()
 		}
-		if segue.identifier == Segues.ToSearchView{}
+		if segue.identifier == Segues.ToSearchView{
+			let searchView = segue.destination as! SearchView
+			searchView.goals = goals
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
 	
-	func setStartAndGoal() -> (CLLocationCoordinate2D, CLLocationCoordinate2D) {
-		let start = locationManager.location!.coordinate
-		let goal = getCenterLocation(for: mapView).coordinate
-		return (start, goal)
+	func loadGoals(){
+		for goalCoordinates in goals{
+			let goal = MKPointAnnotation()
+			goal.coordinate = goalCoordinates
+			mapView.addAnnotation(goal)
+		}
+	}
+	
+	@IBOutlet weak var buttonStackView: UIStackView!
+	
+	func setupStackView(){
+		buttonStackView.alignment = .center
+		buttonStackView.distribution = .fillEqually
+		buttonStackView.axis = .horizontal
+		buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+	}
+	
+	func setupStartButton(){
+		setupStackView()
+		let startButton = UIButton()
+		startButton.setImage(UIImage(named: "START"), for: .normal)
+		startButton.heightAnchor.constraint(equalToConstant: 180).isActive = true
+		buttonStackView.addArrangedSubview(startButton)
+		startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+	}
+	
+	@objc func startButtonTapped(){
+		self.performSegue(withIdentifier: Segues.ToCompassView, sender: nil)
+	}
+	
+	var goals: [CLLocationCoordinate2D] = []
+	
+	@IBAction func addGoals(_ sender: Any) {
+		let goal = MKPointAnnotation()
+		//firstGoal.title = String(count)
+		goal.coordinate = getCenterLocation(for: mapView).coordinate
+		goals.append(goal.coordinate)
+		mapView.addAnnotation(goal)
+		if goals.count == 1{
+			setupStartButton()
+		}
+	}
+	
+	func getCenterLocation(for mapView: MKMapView) -> CLLocation{
+		let latitude = mapView.centerCoordinate.latitude
+		let longitude = mapView.centerCoordinate.longitude
+		return CLLocation(latitude: latitude, longitude: longitude)
 	}
 	
 	func centerViewOnUserLocation(){
@@ -134,11 +184,6 @@ class MapView: UIViewController, UISearchBarDelegate {
 		present(alertController, animated: true, completion: nil)
 	}
 	
-	func getCenterLocation(for mapView: MKMapView) -> CLLocation{
-		let latitude = mapView.centerCoordinate.latitude
-		let longitude = mapView.centerCoordinate.longitude
-		return CLLocation(latitude: latitude, longitude: longitude)
-	}
 }
 
 extension MapView: CLLocationManagerDelegate {

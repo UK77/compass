@@ -15,6 +15,7 @@ class CompassView: UIViewController{
 	var locationManager: CLLocationManager!
 	
 	var start: CLLocationCoordinate2D!
+	var goals: [CLLocationCoordinate2D]!
 	var goal: CLLocationCoordinate2D!
 	
 	var current: CLLocationCoordinate2D?
@@ -52,7 +53,6 @@ class CompassView: UIViewController{
 		
 		//constraints of distanceToTheDestination
 		DistanceToTheDestinationView.bottomAnchor.constraint(equalTo: toTheDestinationImageView.bottomAnchor, constant: -80  ).isActive = true
-		//print()
 		
 	}
 
@@ -60,18 +60,20 @@ class CompassView: UIViewController{
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
 	override func viewDidLoad() {
-		
+		goal = goals[0]
+		if  (goals.count == 1){
+			nextButton.removeFromSuperview()
+		}
 		super.viewDidLoad()
 		setConstraints()
 		locationManagerConfig()
 		UIApplication.shared.isIdleTimerDisabled = true
 		lastLocation = start
-		bearing = calculateBearing(current: start)
+		bearing = calculateBearing(current: start, goal: goal)
 		current = start
 		ToTheDestination.frame = DistanceToTheDestinationView.bounds
 		ToTheDestination.textAlignment = .center
 		ToTheDestination.attributedText = NSMutableAttributedString(string: setDistanceLabel(start: start, end: goal), attributes: strokeTextAttributes)
-
 		// End of viewDidLoad()
 	}
 		
@@ -81,6 +83,18 @@ class CompassView: UIViewController{
 			finishView.totalDistance = totalDistance
 			finishView.strokeTextAttributes = strokeTextAttributes
 		}
+	}
+	
+	@IBOutlet weak var nextButton: UIButton!
+	var count:Int = 1
+	@IBAction func changeToNextGoal(_ sender: Any) {
+			goal = goals[count]
+			ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
+			bearing =  calculateBearing(current: current!, goal: goal!)
+			count += 1
+			if goals.count == count {
+				nextButton.removeFromSuperview()
+			}
 	}
 	
 	func locationManagerConfig(){
@@ -93,7 +107,7 @@ class CompassView: UIViewController{
 		locationManager.headingOrientation = .portrait
 	}
 	
-	func calculateBearing(current: CLLocationCoordinate2D) -> CGFloat{
+	func calculateBearing(current: CLLocationCoordinate2D, goal:CLLocationCoordinate2D) -> CGFloat{
 		let fLat = degreesToRadians(degrees: current.latitude)
 		let fLng = degreesToRadians(degrees: current.longitude)
 		let tLat = degreesToRadians(degrees: goal.latitude)
@@ -136,10 +150,11 @@ extension CompassView: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		current = location.coordinate
-		ToTheDestination.text =  setDistanceLabel(start: current!, end: goal)
+		if (goal != nil) {goal = goals[0]}
+		ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
 		totalDistance += calculateDistance(start: current!, end: lastLocation)
 		lastLocation = current
-		bearing =  calculateBearing(current: current!)
+		bearing =  calculateBearing(current: current!, goal: goal!)
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {

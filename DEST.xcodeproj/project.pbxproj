@@ -46,7 +46,7 @@
 		60F9520C24A9C2B200D0B312 = {
 			isa = PBXGroup;
 			children = (
-				60F9521724A9C2B200D0B312 /* compass */,
+				60F9521724A9C2B200D0B312 /* DEST */,
 				60F9521624A9C2B200D0B312 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,7 +59,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		60F9521724A9C2B200D0B312 /* compass */ = {
+		60F9521724A9C2B200D0B312 /* DEST */ = {
 			isa = PBXGroup;
 			children = (
 				60F9521824A9C2B200D0B312 /* AppDelegate.swift */,
@@ -73,15 +73,15 @@
 				60F9522324A9C2B400D0B312 /* LaunchScreen.storyboard */,
 				60F9522624A9C2B400D0B312 /* Info.plist */,
 			);
-			path = compass;
+			path = DEST;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		60F9521424A9C2B200D0B312 /* compass */ = {
+		60F9521424A9C2B200D0B312 /* DEST */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60F9522924A9C2B400D0B312 /* Build configuration list for PBXNativeTarget "compass" */;
+			buildConfigurationList = 60F9522924A9C2B400D0B312 /* Build configuration list for PBXNativeTarget "DEST" */;
 			buildPhases = (
 				60F9521124A9C2B200D0B312 /* Sources */,
 				60F9521224A9C2B200D0B312 /* Frameworks */,
@@ -91,7 +91,7 @@
 			);
 			dependencies = (
 			);
-			name = compass;
+			name = DEST;
 			productName = compass;
 			productReference = 60F9521524A9C2B200D0B312 /* DEST.app */;
 			productType = "com.apple.product-type.application";
@@ -111,7 +111,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 60F9521024A9C2B200D0B312 /* Build configuration list for PBXProject "compass" */;
+			buildConfigurationList = 60F9521024A9C2B200D0B312 /* Build configuration list for PBXProject "DEST" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				60F9521424A9C2B200D0B312 /* compass */,
+				60F9521424A9C2B200D0B312 /* DEST */,
 			);
 		};
 /* End PBXProject section */
@@ -298,13 +298,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YMT7N2266;
-				INFOPLIST_FILE = compass/Info.plist;
+				INFOPLIST_FILE = DEST/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lazykazee.compass;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lazykazee.DEST;
 				PRODUCT_NAME = DEST;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -317,13 +317,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5YMT7N2266;
-				INFOPLIST_FILE = compass/Info.plist;
+				INFOPLIST_FILE = DEST/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lazykazee.compass;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lazykazee.DEST;
 				PRODUCT_NAME = DEST;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -333,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		60F9521024A9C2B200D0B312 /* Build configuration list for PBXProject "compass" */ = {
+		60F9521024A9C2B200D0B312 /* Build configuration list for PBXProject "DEST" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60F9522724A9C2B400D0B312 /* Debug */,
@@ -342,7 +342,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60F9522924A9C2B400D0B312 /* Build configuration list for PBXNativeTarget "compass" */ = {
+		60F9522924A9C2B400D0B312 /* Build configuration list for PBXNativeTarget "DEST" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				60F9522A24A9C2B400D0B312 /* Debug */,
