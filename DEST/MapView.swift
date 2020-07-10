@@ -40,7 +40,7 @@ class MapView: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 		}else{
 			checkLocationServices()
 		}
-		
+
 		if goals.count != 0{
 			loadGoals()
 			setupStartButton()

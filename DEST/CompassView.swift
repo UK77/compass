@@ -53,7 +53,6 @@ class CompassView: UIViewController{
 		
 		//constraints of distanceToTheDestination
 		DistanceToTheDestinationView.bottomAnchor.constraint(equalTo: toTheDestinationImageView.bottomAnchor, constant: -80  ).isActive = true
-		//print()
 		
 	}
 
@@ -87,13 +86,13 @@ class CompassView: UIViewController{
 	}
 	
 	@IBOutlet weak var nextButton: UIButton!
-	var count = 1
+	var count:Int = 1
 	@IBAction func changeToNextGoal(_ sender: Any) {
 			goal = goals[count]
 			ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
 			bearing =  calculateBearing(current: current!, goal: goal!)
 			count += 1
-			if goals.count >= count {
+			if goals.count == count {
 				nextButton.removeFromSuperview()
 			}
 	}
