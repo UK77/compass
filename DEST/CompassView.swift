@@ -60,6 +60,7 @@ class CompassView: UIViewController{
 	@IBOutlet weak var ToTheDestination: UILabel!
 	
 	override func viewDidLoad() {
+		print("View did load")
 		goal = goals[0]
 		if  (goals.count == 1){
 			nextButton.removeFromSuperview()
@@ -88,14 +89,13 @@ class CompassView: UIViewController{
 	@IBOutlet weak var nextButton: UIButton!
 	var count:Int = 1
 	@IBAction func changeToNextGoal(_ sender: Any) {
-			goal = goals[count]
-			ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
-			bearing =  calculateBearing(current: current!, goal: goal!)
-			count += 1
-		adjustNeedle(heading: heading, bearing: bearing)
-			if goals.count == count {
-				nextButton.removeFromSuperview()
-			}
+		goal = goals[count]
+		count += 1
+		locationManager.stopUpdatingLocation()
+		locationManager.requestLocation()
+		if goals.count == count {
+			nextButton.removeFromSuperview()
+		}
 	}
 	
 	func locationManagerConfig(){
@@ -161,7 +161,6 @@ extension CompassView: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		guard let location = locations.last else { return }
 		current = location.coordinate
-		if (goal != nil) {goal = goals[0]}
 		ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
 		totalDistance += calculateDistance(start: current!, end: lastLocation)
 		lastLocation = current
@@ -171,6 +170,9 @@ extension CompassView: CLLocationManagerDelegate{
 	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
 		heading = CGFloat(newHeading.trueHeading)
 		adjustNeedle(heading: heading, bearing: bearing)
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 	}
 	// End of extension
 }
