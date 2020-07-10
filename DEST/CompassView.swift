@@ -92,6 +92,7 @@ class CompassView: UIViewController{
 			ToTheDestination.text =  setDistanceLabel(start: current!, end: goal!)
 			bearing =  calculateBearing(current: current!, goal: goal!)
 			count += 1
+		adjustNeedle(heading: heading, bearing: bearing)
 			if goals.count == count {
 				nextButton.removeFromSuperview()
 			}
@@ -142,6 +143,16 @@ class CompassView: UIViewController{
 			return String(format: "%.0f m", distanceToDestination)
 		}
 	}
+	
+	func adjustNeedle(heading: CGFloat, bearing: CGFloat){
+		let bearingInDegrees = radiansToDegrees(radians: bearing)
+		adjustedAngle = heading - bearingInDegrees
+		adjustedAngle = -CGFloat(degreesToRadians(degrees: Double(adjustedAngle)))
+		UIView.animate(withDuration: 1.0){
+			self.NeedleImageView.transform =  self.NeedleImageView.transform.rotated(by: self.adjustedAngle - self.lastAdjustedAngle)
+		}
+		lastAdjustedAngle = adjustedAngle
+	}
 	// End of class: CompassView
 }
 
@@ -159,13 +170,7 @@ extension CompassView: CLLocationManagerDelegate{
 	
 	func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
 		heading = CGFloat(newHeading.trueHeading)
-		let bearingInDegrees = radiansToDegrees(radians: bearing)
-		adjustedAngle = heading - bearingInDegrees
-		adjustedAngle = -CGFloat(degreesToRadians(degrees: Double(adjustedAngle)))
-		UIView.animate(withDuration: 1.0){
-			self.NeedleImageView.transform =  self.NeedleImageView.transform.rotated(by: self.adjustedAngle - self.lastAdjustedAngle)
-		}
-		lastAdjustedAngle = adjustedAngle
+		adjustNeedle(heading: heading, bearing: bearing)
 	}
 	// End of extension
 }
